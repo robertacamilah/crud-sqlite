@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-title>CRUD SQLite</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="addUser()" color="warning">
+    <ion-icon name="person-add" slot="start"></ion-icon>
+    Adicionar</ion-button
+    >
+
+    <ion-button expand="block" routerLink="/" color="light">
+      <ion-icon name="arrow-back" slot="start"></ion-icon>
+      Voltar a Home </ion-button>
+
+      <ion-list *ngIf="users && users.length > 0">
+        <ion-list-header>Usuários:</ion-list-header>
+        <ion-item *ngFor="let u of users">
+          <ion-label>
+            <h2>{{ u.name }}</h2>
+            <p>{{ u.email }}</p>
+          </ion-label>
+          <ion-button color="danger" (click)="deleteUser(u.id)">
+            Exluir
+          </ion-button>
+        </ion-item>
+      </ion-list>
+</ion-content>
